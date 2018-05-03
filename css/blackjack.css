@@ -1,0 +1,10 @@
+html {
+   height: 100%;
+}
+body {
+    background: linear-gradient(rgb(177, 225, 192), rgb(108, 164, 108));
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
