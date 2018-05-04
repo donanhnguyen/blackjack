@@ -1,6 +1,9 @@
 
 class Game {
 
+    constructor () {
+        this.yourHand = [];
+    }
 
 
 

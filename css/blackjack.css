@@ -2,9 +2,25 @@ html {
    height: 100%;
 }
 body {
+    text-align: center;
     background: linear-gradient(rgb(177, 225, 192), rgb(108, 164, 108));
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+button {
+    font-size: 25px;
+}
+
+.blackjack-table {
+    color: white;
+    background: rgb(55, 55, 55);
+    border: 1px solid black;
+    min-height: 400px;
+    padding: 10px;
+}
+.buttons {
+    padding: 10px;
 }
 
