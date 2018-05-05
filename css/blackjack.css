@@ -9,6 +9,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
 }
+h1, p, div, figure {
+    margin: 0;
+}
+
 button {
     font-size: 25px;
 }
@@ -18,9 +22,15 @@ button {
     background: rgb(55, 55, 55);
     border: 1px solid black;
     min-height: 400px;
-    padding: 10px;
 }
-.buttons {
-    padding: 10px;
+
+.dealer-hand, .my-hand {
+    border: 1px solid white;
+    min-height: 150px;
+    margin: auto;   
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 400px;
 }
+
 

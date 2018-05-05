@@ -4,7 +4,7 @@ var Game = require('./game.js');
 
 document.addEventListener("DOMContentLoaded", () => {
     const rootEl = document.getElementById('rootEl');
-    console.log(rootEl);
+    var Game1 = new Game ();
 
 })
 
