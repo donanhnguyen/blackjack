@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rootEl = document.getElementById('rootEl');
     var Game1 = new Game ();
 
-
-
+    
     ///--- testing
     Game1.dealCards();
    
