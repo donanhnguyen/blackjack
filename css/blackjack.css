@@ -17,6 +17,37 @@ button {
     font-size: 25px;
 }
 
+.money {
+    display: inline-block;
+    margin: auto;
+    background: white;
+    color: black;   
+    min-width: 200px;   
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dealer-score, .player-score {
+    width: 70px;
+    height: 120px;
+    background: white;
+    color: black;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.deck {
+    float: left;
+    width: 90px;
+    height: 150px;
+    background: gray;
+    
+    margin: 30px;
+}
+
 .blackjack-table {
     color: white;
     background: rgb(55, 55, 55);
@@ -24,10 +55,9 @@ button {
     min-height: 400px;
 }
 
-.dealer-hand, .my-hand {
+.dealer-hand, .player-hand {
     border: 1px solid white;
-    min-height: 150px;
-    margin: auto;   
+    min-height: 150px;   
     margin-top: 20px;
     margin-bottom: 20px;
     width: 400px;

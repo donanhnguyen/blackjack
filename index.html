@@ -13,33 +13,47 @@
 
     <h1>BlackJack by Don Nguyen</h1>
 
-    <figure id='rootEl'>
-        <h1>sex</h1>
-    </figure>
-
     <div id='blackjack-table' class='blackjack-table'>
 
         <h1>Table</h1>
 
-        <div id="dealer-hand" class='dealer-hand'>
-            <p>House:</p>
-
-
+        <div id="deck" class='deck'>
+            deck
         </div>
 
-        <div id='my-hand' class='my-hand'>
-            <p>You:</p>
+        <div class='flex'>
+            <div id="dealer-hand" class='dealer-hand'>
+                <p>House:</p>
+            </div>
+            <div id='dealer-score' class='dealer-score'>
 
-
+            </div>
         </div>
+       
+        <div class='flex'>
+            <div id='player-hand' class='player-hand'>
+                <p>You:</p>
+            </div>
+            <div id='player-score' class='player-score'>
+
+            </div>
+        </div>
+
+
+
+
+        
 
     </div>
 
     <div class='buttons'>
-        <button>Start</button>
-        <button>Hit</button>
-        <button>Stay</button>
+        <button id='start-button'>Start</button>
+        <button id='hit-button'>Hit</button>
+        <button id='stay-button'>Stay</button>
     </div>
-    
+    <div id='money' class='money'>
+            your money here
+    </div>
+
 </body>
 </html>
