@@ -11,6 +11,11 @@ class Game {
         this.dealer = new Dealer ();
     }
 
+
+    start () {
+        this.dealCards();
+    }
+
     dealCards () {
         var players = [this.player, this.dealer];
         let card = null;

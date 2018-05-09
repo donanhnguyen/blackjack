@@ -78,8 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     var Blackjack = new View (Game1, rootEl);
     
     ///--- testing
-    Blackjack.game.dealCards();
+    Blackjack.game.start();
     Blackjack.render();
+
     
     //---testing
     
@@ -102,6 +103,11 @@ class Game {
         this.deck = ShuffleDeck(Deck());
         this.player = new Player ();
         this.dealer = new Dealer ();
+    }
+
+
+    start () {
+        this.dealCards();
     }
 
     dealCards () {
@@ -276,6 +282,7 @@ class View {
         this.rootEl = rootEl;
         this.HitButton = document.getElementById('hit-button');
         this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
+
         this.render();
     }
 
@@ -284,9 +291,15 @@ class View {
         this.render();
     }
 
+    startClickHandler () {
+        this.game.start();
+        this.render();
+    }
+
     render () {
         document.getElementById('player-score').innerHTML = this.game.player.score;
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
+        document.getElementById('money').innerHTML = this.game.player.money
     }
 
 }
