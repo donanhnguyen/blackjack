@@ -22,16 +22,16 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        // console.log(this.player.hand);
-        // console.log(this.player.score);
+        console.log(this.player.hand);
+        console.log(this.player.score);
 
     }
 
     hitPlayer () {
         let card = this.deck.pop();
         this.player.hit(card);
-        // console.log(this.player.hand);
-        // console.log(this.player.score);
+        console.log(this.player.hand);
+        console.log(this.player.score);
     }
 
 

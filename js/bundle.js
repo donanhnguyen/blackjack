@@ -70,23 +70,17 @@
 console.log("black jack bitch");
 
 var Game = __webpack_require__(1);
+var View = __webpack_require__(6);
 
 document.addEventListener("DOMContentLoaded", () => {
     const rootEl = document.getElementById('rootEl');
     var Game1 = new Game ();
-
+    var Blackjack = new View (Game1, rootEl);
     
     ///--- testing
-    Game1.dealCards();
-   
-    document.getElementById('player-score').innerHTML = Game1.player.score;
-    document.getElementById('dealer-score').innerHTML = Game1.dealer.score;
+    Blackjack.game.dealCards();
+    Blackjack.render();
     
-    document.getElementById('hit-button').addEventListener("click", () => {
-        Game1.hitPlayer();
-        document.getElementById('player-score').innerHTML = Game1.player.score;
-        document.getElementById('dealer-score').innerHTML = Game1.dealer.score;
-    })
     //---testing
     
 })
@@ -121,16 +115,16 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        // console.log(this.player.hand);
-        // console.log(this.player.score);
+        console.log(this.player.hand);
+        console.log(this.player.score);
 
     }
 
     hitPlayer () {
         let card = this.deck.pop();
         this.player.hit(card);
-        // console.log(this.player.hand);
-        // console.log(this.player.score);
+        console.log(this.player.hand);
+        console.log(this.player.score);
     }
 
 
@@ -270,6 +264,34 @@ class Dealer {
 }
 
 module.exports = Dealer;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+class View {
+
+    constructor (game, rootEl) {
+        this.game = game;
+        this.rootEl = rootEl;
+        this.HitButton = document.getElementById('hit-button');
+        this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
+        this.render();
+    }
+
+    hitClickHandler () {
+        this.game.hitPlayer();
+        this.render();
+    }
+
+    render () {
+        document.getElementById('player-score').innerHTML = this.game.player.score;
+        document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
+    }
+
+}
+
+module.exports = View;
 
 /***/ })
 /******/ ]);
