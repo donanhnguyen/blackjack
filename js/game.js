@@ -71,6 +71,7 @@ class Game {
     }
 
     stay () {
+        //there is a problem here whenever the dealer gets 17, it crashed the game, the problem is in this fucntion;
         this.player.staying = true;
         while (this.dealer.score < 17) {
             if (this.dealer.score <= 16) {
