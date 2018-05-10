@@ -72,7 +72,7 @@ class Game {
 
     stay () {
         this.player.staying = true;
-        while (this.dealer.score <= 17) {
+        while (this.dealer.score < 17) {
             if (this.dealer.score <= 16) {
                 this.hitDealer();
             }
