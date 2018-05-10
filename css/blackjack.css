@@ -17,6 +17,10 @@ button {
     font-size: 25px;
 }
 
+.hide-this-shit {
+    display:none;
+}
+
 .money {
     display: inline-block;
     margin: auto;

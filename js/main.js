@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var Blackjack = new View (Game1, rootEl);
     
     ///--- testing
-    Blackjack.game.start();
+    
     Blackjack.render();
 
     

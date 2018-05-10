@@ -5,7 +5,7 @@ class Player {
         this.money = 100;
         this.staying = false;
         this.score = null;
-        this.wager = 0;
+        this.bet = 0;
         this.calculateWeight();
     }
 

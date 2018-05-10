@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var Blackjack = new View (Game1, rootEl);
     
     ///--- testing
-    Blackjack.game.start();
+    
     Blackjack.render();
 
     
@@ -103,12 +103,31 @@ class Game {
         this.deck = ShuffleDeck(Deck());
         this.player = new Player ();
         this.dealer = new Dealer ();
+        this.started = false;
     }
 
 
     start () {
         this.dealCards();
+        this.started = true;
     }
+
+    newGame () {
+        this.dealer.hand = [];
+        this.player.hand = [];
+        this.player.staying = false;
+        this.player.bet = 0;
+        this.deck = ShuffleDeck(Deck());
+        this.dealCards();
+    }
+
+    checkIfPlayerBusted () {
+        if (this.player.score > 21) {
+            alert('Sorry, you lost! You went over 21.');
+            this.newGame();
+        } 
+    }
+
 
     dealCards () {
         var players = [this.player, this.dealer];
@@ -121,16 +140,55 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
+        
+        console.log('players hand');
         console.log(this.player.hand);
         console.log(this.player.score);
 
     }
 
+    checkWinner () {
+        if (this.dealer.score < this.player.score) {
+            alert("You got a higher score! You Win!");
+        } 
+            else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
+            alert("Dealer got higher score than you, you lose!");
+        } else if (this.dealer.score > 21) {
+            alert("Dealer went over 21, you win!");
+        } else if (this.dealer.score = 21) {
+            alert("Dealer got 21, you lose!");
+        } else if (this.dealer.score = this.player.score) {
+            alert("Tie! You lose!");
+        }
+        this.newGame();
+
+    }
+
+    stay () {
+        this.player.staying = true;
+        while (this.dealer.score <= 17) {
+            if (this.dealer.score <= 16) {
+                this.hitDealer();
+            }
+        }
+        this.checkWinner();
+    }
+
+    hitDealer() {
+        let card = this.deck.pop();
+        this.dealer.hit(card);
+        console.log('dealers hand');
+        console.log(this.dealer.hand);
+        console.log(this.dealer.score);
+    }
+
     hitPlayer () {
         let card = this.deck.pop();
         this.player.hit(card);
+        console.log('players hand');
         console.log(this.player.hand);
         console.log(this.player.score);
+        this.checkIfPlayerBusted();
     }
 
 
@@ -213,7 +271,7 @@ class Player {
         this.money = 100;
         this.staying = false;
         this.score = null;
-        this.wager = 0;
+        this.bet = 0;
         this.calculateWeight();
     }
 
@@ -282,7 +340,17 @@ class View {
         this.rootEl = rootEl;
         this.HitButton = document.getElementById('hit-button');
         this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
+        this.StartButton = document.getElementById('start-button');
+        this.StartButton.addEventListener("click", this.startClickHandler.bind(this));
+        this.StayButton = document.getElementById('stay-button');
+        this.StayButton.addEventListener("click", this.stayClickHandler.bind(this));
+        this.Deck = document.getElementById("deck");
+    
+        this.render();
+    }
 
+    stayClickHandler () {
+        this.game.stay();
         this.render();
     }
 
@@ -297,9 +365,14 @@ class View {
     }
 
     render () {
+        if (this.game.started) {
+            this.StartButton.classList.add("hide-this-shit");
+            this.HitButton.classList.remove('hide-this-shit');
+        }
         document.getElementById('player-score').innerHTML = this.game.player.score;
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
         document.getElementById('money').innerHTML = this.game.player.money
+        this.Deck.innerHTML = this.game.deck.length;
     }
 
 }
