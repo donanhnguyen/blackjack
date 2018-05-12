@@ -33,6 +33,7 @@ class View {
         if (this.game.started) {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
+            this.StayButton.classList.remove('hide-this-shit');
         }
         document.getElementById('player-score').innerHTML = this.game.player.score;
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;

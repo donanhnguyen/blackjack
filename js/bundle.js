@@ -144,20 +144,22 @@ class Game {
         console.log('players hand');
         console.log(this.player.hand);
         console.log(this.player.score);
-
     }
 
     checkWinner () {
-        if (this.dealer.score < this.player.score) {
+        if (this.player.score === 21) {
+            alert("21! YOU WIN!");
+        }
+        else if (this.dealer.score < this.player.score) {
             alert("You got a higher score! You Win!");
         } 
             else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
             alert("Dealer got higher score than you, you lose!");
         } else if (this.dealer.score > 21) {
             alert("Dealer went over 21, you win!");
-        } else if (this.dealer.score = 21) {
+        } else if (this.dealer.score === 21) {
             alert("Dealer got 21, you lose!");
-        } else if (this.dealer.score = this.player.score) {
+        } else if (this.dealer.score === this.player.score) {
             alert("Tie! You lose!");
         }
         this.newGame();
@@ -166,10 +168,8 @@ class Game {
 
     stay () {
         this.player.staying = true;
-        while (this.dealer.score <= 17) {
-            if (this.dealer.score <= 16) {
+        while (this.dealer.score <= 16 && this.player.score !== 21) {
                 this.hitDealer();
-            }
         }
         this.checkWinner();
     }
@@ -190,11 +190,6 @@ class Game {
         console.log(this.player.score);
         this.checkIfPlayerBusted();
     }
-
-
-
-
-
 
 }
 
@@ -368,6 +363,7 @@ class View {
         if (this.game.started) {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
+            this.StayButton.classList.remove('hide-this-shit');
         }
         document.getElementById('player-score').innerHTML = this.game.player.score;
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
