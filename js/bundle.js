@@ -104,26 +104,31 @@ class Game {
         this.player = new Player ();
         this.dealer = new Dealer ();
         this.started = false;
+        this.gameOver = false;
     }
 
-
     start () {
-        this.dealCards();
-        this.started = true;
+        this.newGame();
     }
 
     newGame () {
-        this.dealer.hand = [];
-        this.player.hand = [];
-        this.player.staying = false;
-        this.player.bet = 0;
-        this.deck = ShuffleDeck(Deck());
-        this.dealCards();
+        if (this.player.money <= 0) {
+            this.gameOver = true;
+            alert("You lost all your money! Referesh the page to start over!");
+        } else {
+            this.started = true;
+            this.dealer.hand = [];
+            this.player.hand = [];
+            this.player.staying = false;
+            this.deck = ShuffleDeck(Deck());
+            this.dealCards();
+        } 
     }
 
     checkIfPlayerBusted () {
         if (this.player.score > 21) {
             alert('Sorry, you lost! You went over 21.');
+            this.player.money -= this.player.bet;
             this.newGame();
         } 
     }
@@ -147,23 +152,37 @@ class Game {
     }
 
     checkWinner () {
+        let winner = null;
         if (this.player.score === 21) {
             alert("21! YOU WIN!");
-        }
-        else if (this.dealer.score < this.player.score) {
+            winner = this.player;
+        }   else if (this.dealer.score < this.player.score) {
             alert("You got a higher score! You Win!");
-        } 
-            else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
-            alert("Dealer got higher score than you, you lose!");
-        } else if (this.dealer.score > 21) {
+            winner = this.player;
+        }   else if (this.dealer.score > 21) {
             alert("Dealer went over 21, you win!");
+            winner = this.player;
+        } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
+            alert("Dealer got higher score than you, you lose!");
+            winner = this.dealer;
         } else if (this.dealer.score === 21) {
             alert("Dealer got 21, you lose!");
+            winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
             alert("Tie! You lose!");
+            winner = this.dealer;
         }
-        this.newGame();
+       
+        if (winner === this.player) {
+            this.player.money += this.player.bet;
+        } else {
+            this.player.money -= this.player.bet;
+        }
 
+        console.log(winner);
+        console.log('bet');
+        console.log(this.player.bet);
+        this.newGame();
     }
 
     stay () {
@@ -270,6 +289,13 @@ class Player {
         this.calculateWeight();
     }
 
+    submitBet (amount) {
+        if (amount <= this.money) {
+            this.bet = amount;
+            console.log(this.bet); 
+        }
+    }
+
     calculateWeight () {
         var total = null;
         this.hand.forEach(card => {
@@ -335,12 +361,30 @@ class View {
         this.rootEl = rootEl;
         this.HitButton = document.getElementById('hit-button');
         this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
+
         this.StartButton = document.getElementById('start-button');
         this.StartButton.addEventListener("click", this.startClickHandler.bind(this));
+
         this.StayButton = document.getElementById('stay-button');
         this.StayButton.addEventListener("click", this.stayClickHandler.bind(this));
+
+       
+        this.BetAmount = document.getElementById('bet-amount');
+        this.BetAmount.addEventListener('change', this.handleBetAmount.bind(this));
+     
         this.Deck = document.getElementById("deck");
     
+        this.render();
+    }
+
+    handleBetAmount (event) {
+        let betAmount = parseInt(event.currentTarget.value);
+        this.game.player.submitBet(betAmount);
+        this.render();
+    }
+
+    betClickHandler () {
+        this.game.player.submitBet(this.BetAmount.value);
         this.render();
     }
 
@@ -355,7 +399,12 @@ class View {
     }
 
     startClickHandler () {
-        this.game.start();
+        if (this.game.player.bet !== 0) {
+            this.game.start();
+        } else {
+            alert("You have to bet something first");
+        }
+        
         this.render();
     }
 

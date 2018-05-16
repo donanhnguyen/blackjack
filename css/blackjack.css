@@ -12,7 +12,11 @@ body {
 h1, p, div, figure {
     margin: 0;
 }
-
+input[type='number'] {
+    text-align: center; 
+    font-size: 25px;
+    width: 200px;
+}
 button {
     font-size: 25px;
 }

@@ -9,6 +9,13 @@ class Player {
         this.calculateWeight();
     }
 
+    submitBet (amount) {
+        if (amount <= this.money) {
+            this.bet = amount;
+            console.log(this.bet); 
+        }
+    }
+
     calculateWeight () {
         var total = null;
         this.hand.forEach(card => {

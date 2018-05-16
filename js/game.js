@@ -10,26 +10,31 @@ class Game {
         this.player = new Player ();
         this.dealer = new Dealer ();
         this.started = false;
+        this.gameOver = false;
     }
 
-
     start () {
-        this.dealCards();
-        this.started = true;
+        this.newGame();
     }
 
     newGame () {
-        this.dealer.hand = [];
-        this.player.hand = [];
-        this.player.staying = false;
-        this.player.bet = 0;
-        this.deck = ShuffleDeck(Deck());
-        this.dealCards();
+        if (this.player.money <= 0) {
+            this.gameOver = true;
+            alert("You lost all your money! Referesh the page to start over!");
+        } else {
+            this.started = true;
+            this.dealer.hand = [];
+            this.player.hand = [];
+            this.player.staying = false;
+            this.deck = ShuffleDeck(Deck());
+            this.dealCards();
+        } 
     }
 
     checkIfPlayerBusted () {
         if (this.player.score > 21) {
             alert('Sorry, you lost! You went over 21.');
+            this.player.money -= this.player.bet;
             this.newGame();
         } 
     }
@@ -53,23 +58,37 @@ class Game {
     }
 
     checkWinner () {
+        let winner = null;
         if (this.player.score === 21) {
             alert("21! YOU WIN!");
-        }
-        else if (this.dealer.score < this.player.score) {
+            winner = this.player;
+        }   else if (this.dealer.score < this.player.score) {
             alert("You got a higher score! You Win!");
-        } 
-            else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
-            alert("Dealer got higher score than you, you lose!");
-        } else if (this.dealer.score > 21) {
+            winner = this.player;
+        }   else if (this.dealer.score > 21) {
             alert("Dealer went over 21, you win!");
+            winner = this.player;
+        } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
+            alert("Dealer got higher score than you, you lose!");
+            winner = this.dealer;
         } else if (this.dealer.score === 21) {
             alert("Dealer got 21, you lose!");
+            winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
             alert("Tie! You lose!");
+            winner = this.dealer;
         }
-        this.newGame();
+       
+        if (winner === this.player) {
+            this.player.money += this.player.bet;
+        } else {
+            this.player.money -= this.player.bet;
+        }
 
+        console.log(winner);
+        console.log('bet');
+        console.log(this.player.bet);
+        this.newGame();
     }
 
     stay () {

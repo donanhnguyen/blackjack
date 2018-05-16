@@ -5,12 +5,30 @@ class View {
         this.rootEl = rootEl;
         this.HitButton = document.getElementById('hit-button');
         this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
+
         this.StartButton = document.getElementById('start-button');
         this.StartButton.addEventListener("click", this.startClickHandler.bind(this));
+
         this.StayButton = document.getElementById('stay-button');
         this.StayButton.addEventListener("click", this.stayClickHandler.bind(this));
+
+       
+        this.BetAmount = document.getElementById('bet-amount');
+        this.BetAmount.addEventListener('change', this.handleBetAmount.bind(this));
+     
         this.Deck = document.getElementById("deck");
     
+        this.render();
+    }
+
+    handleBetAmount (event) {
+        let betAmount = parseInt(event.currentTarget.value);
+        this.game.player.submitBet(betAmount);
+        this.render();
+    }
+
+    betClickHandler () {
+        this.game.player.submitBet(this.BetAmount.value);
         this.render();
     }
 
@@ -25,7 +43,12 @@ class View {
     }
 
     startClickHandler () {
-        this.game.start();
+        if (this.game.player.bet !== 0) {
+            this.game.start();
+        } else {
+            alert("You have to bet something first");
+        }
+        
         this.render();
     }
 
