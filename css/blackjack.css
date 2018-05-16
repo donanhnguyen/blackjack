@@ -64,11 +64,23 @@ button {
 }
 
 .dealer-hand, .player-hand {
+    display: flex;
     border: 1px solid white;
     min-height: 150px;   
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 400px;
+    min-width: 400px;
 }
-
-
+.black {
+    color: black;
+}
+.red {
+    color: red;
+}
+.card {
+    width: 70px;
+    height: 120px;
+    margin: 5px;
+    background: white;
+    padding: 20px;
+}

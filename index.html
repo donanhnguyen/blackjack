@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="./css/blackjack.css">
     <script src="./js/bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>BlackJack by Don Nguyen</title>
 </head>
 <body>
@@ -17,13 +18,14 @@
 
         <h1>Table</h1>
 
+        
         <div id="deck" class='deck'>
-            deck
         </div>
 
         <div class='flex'>
+            <p>Dealer:</p>
             <div id="dealer-hand" class='dealer-hand'>
-                <p>House:</p>
+                
             </div>
             <div id='dealer-score' class='dealer-score'>
 
@@ -31,8 +33,9 @@
         </div>
        
         <div class='flex'>
+            <p>You:</p>
             <div id='player-hand' class='player-hand'>
-                <p>You:</p>
+                
             </div>
             <div id='player-score' class='player-score'>
 

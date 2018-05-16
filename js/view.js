@@ -62,6 +62,45 @@ class View {
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
         document.getElementById('money').innerHTML = this.game.player.money
         this.Deck.innerHTML = this.game.deck.length;
+        this.renderUICards();
+
+    }
+
+    renderUICards () {
+        var dealerHand = document.getElementById("dealer-hand");
+        var playerHand = document.getElementById("player-hand");
+
+        var dHand = $("#dealer-hand");
+        dHand.empty();
+
+        for (let i = 0; i<this.game.dealer.hand.length; i++) {
+            var dealerCard = this.game.dealer.hand[i];
+            let card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = dealerCard.value;
+            if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
+                card.classList.add("black");
+            } else {
+                card.classList.add("red");
+            }
+            dealerHand.appendChild(card);
+        }
+
+        var pHand = $("#player-hand");
+        pHand.empty();
+
+        for (let i = 0; i<this.game.player.hand.length; i++) {
+            var playerCard = this.game.player.hand[i];
+            let card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = playerCard.value;
+            if (playerCard.suit === "Spades" || playerCard.suit === "Clubs") {
+                card.classList.add("black");
+            } else {
+                card.classList.add("red");
+            }
+            playerHand.appendChild(card);
+        }
     }
 
 }

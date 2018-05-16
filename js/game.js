@@ -85,9 +85,6 @@ class Game {
             this.player.money -= this.player.bet;
         }
 
-        console.log(winner);
-        console.log('bet');
-        console.log(this.player.bet);
         this.newGame();
     }
 
