@@ -78,9 +78,46 @@ button {
     color: red;
 }
 .card {
+    position: relative;
     width: 70px;
     height: 120px;
     margin: 5px;
     background: white;
     padding: 20px;
+}
+/* animation: cardDrop 0.5s;
+-moz-animation: cardDrop 0.5s;
+-webkit-animation: cardDrop 0.5s;
+-o-animation: cardDrop 0.5s; */
+@keyframes cardDrop {
+    from {
+        top: -650px;
+    }
+    to {
+        top: 0px;
+    }
+}
+@-moz-keyframes cardDrop { /* Firefox */
+    from {
+        top: -650px;
+    }
+    to {
+        top: 0px;
+    }
+}
+@-webkit-keyframes cardDrop { /* Safari and Chrome */
+    from {
+        top: -650px;
+    }
+    to {
+        top: 0px;
+    }
+}
+@-o-keyframes cardDrop { /* Opera */
+    from {
+        top: -650px;
+    }
+    to {
+        top: 0px;
+    }
 }

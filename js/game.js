@@ -35,7 +35,7 @@ class Game {
         if (this.player.score > 21) {
             alert('Sorry, you lost! You went over 21.');
             this.player.money -= this.player.bet;
-            this.newGame();
+            this.started = false;
         } 
     }
 
@@ -84,8 +84,7 @@ class Game {
         } else {
             this.player.money -= this.player.bet;
         }
-
-        this.newGame();
+        this.started = false;
     }
 
     stay () {

@@ -48,16 +48,25 @@ class View {
         } else {
             alert("You have to bet something first");
         }
-        
         this.render();
     }
 
     render () {
+        if (this.game.gameOver) {
+            $("#buttons").empty();
+        }
         if (this.game.started) {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
             this.StayButton.classList.remove('hide-this-shit');
+            this.BetAmount.setAttribute("readonly", "");
+        } else {
+            this.StartButton.classList.remove('hide-this-shit');
+            this.HitButton.classList.add('hide-this-shit');
+            this.StayButton.classList.add('hide-this-shit');
+            this.BetAmount.removeAttribute("readonly");
         }
+
         document.getElementById('player-score').innerHTML = this.game.player.score;
         document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
         document.getElementById('money').innerHTML = this.game.player.money
@@ -101,6 +110,14 @@ class View {
             }
             playerHand.appendChild(card);
         }
+
+        if (!this.game.started) {
+            $("#dealer-hand").empty();
+            $("#player-hand").empty();
+            document.getElementById('player-score').innerHTML = "";
+            document.getElementById('dealer-score').innerHTML = "";
+        }
+
     }
 
 }
