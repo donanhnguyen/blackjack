@@ -3,10 +3,11 @@ html {
 }
 body {
     text-align: center;
-    background: linear-gradient(rgb(196, 240, 210), rgb(85, 104, 85));
+    background: rgb(160, 193, 160);
+    color: white;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 25px;
 }
 h1, p, div, figure {
@@ -15,61 +16,80 @@ h1, p, div, figure {
 input[type='number'] {
     text-align: center; 
     font-size: 25px;
-    width: 200px;
+    width: 150px;
+    border-radius: 10px;
 }
 button {
+    background-color: rgb(108, 155, 211);
+    color: white;
     font-size: 25px;
+    border-radius: 10px;
 }
-
+button:hover {
+    background: rgb(194, 71, 49);
+    cursor: pointer;
+}
+.heading {
+    padding: 40px;
+}
+.blackjack-table {
+    color: white;
+    background: rgb(55, 55, 55);
+    border: 1px solid black;
+    margin-top: 10px; 
+}
 .hide-this-shit {
     display:none;
 }
-
 .money {
     display: inline-block;
     margin: auto;
     background: white;
     color: black;   
     min-width: 200px;   
+    border-radius: 10px;
 }
-
 .flex {
     display: flex;
     justify-content: space-evenly;
 }
-
+.table-section-1, .table-section-2, .table-section-3 {
+    border: 1px solid white;
+    width: 33.3%
+}
+.table-section-1 {
+    padding-top:125px;
+}
+.table-section-3 {
+    padding-top: 130px;
+    font-size: 20px;
+}
+.table-section-3 h1, .table-section-3 button, .table-section-3 label, .table-section-3 input {
+    margin: 10px;
+}
 .dealer-score, .player-score {
-    width: 70px;
-    height: 120px;
     background: white;
     color: black;
-    padding: 20px;
-    margin-top: 10px;
 }
-
 .deck {
-    float: left;
-    width: 90px;
-    height: 150px;
-    background: gray;
-    
-    margin: 30px;
-}
-
-.blackjack-table {
-    color: white;
-    background: rgb(55, 55, 55);
+    width: 120px;
+    height: 175px;
+    margin: auto;
+    background-image: url('../images/deck.jpg');
+    background-size: 100% 100%;
+    font-size: 50px;
+    color: black;
     border: 1px solid black;
-    min-height: 400px;
+    border-radius: 10px;
 }
-
 .dealer-hand, .player-hand {
     display: flex;
+    background: linear-gradient(rgb(228, 228, 228), rgb(155, 182, 143));
     border: 1px solid white;
     min-height: 150px;   
     margin-top: 20px;
     margin-bottom: 20px;
-    min-width: 400px;
+    width: 100%;
 }
 .black {
     color: black;
@@ -79,16 +99,37 @@ button {
 }
 .card {
     position: relative;
-    width: 70px;
-    height: 120px;
+    width: 60px;
+    height: 100px;
     margin: 5px;
     background: white;
     padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
 }
-/* animation: cardDrop 0.5s;
--moz-animation: cardDrop 0.5s;
--webkit-animation: cardDrop 0.5s;
--o-animation: cardDrop 0.5s; */
+.back-of-card {
+    position: relative;
+    width: 60px;
+    height: 100px;
+    margin: 5px;
+    background: rgb(43, 43, 43);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.cardDrop {
+    animation: cardDrop 0.5s;
+    -moz-animation: cardDrop 0.5s;
+    -webkit-animation: cardDrop 0.5s;
+    -o-animation: cardDrop 0.5s;
+}
+.game-message {
+    text-align: center;
+    background-color: white;    
+    margin: 0px;
+    font-size: 35px;
+    color: red;
+}
 @keyframes cardDrop {
     from {
         top: -650px;

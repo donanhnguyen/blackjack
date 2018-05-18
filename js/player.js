@@ -12,7 +12,8 @@ class Player {
     submitBet (amount) {
         if (amount <= this.money) {
             this.bet = amount;
-            console.log(this.bet); 
+        } else {
+            alert("You don't have that much money...")
         }
     }
 

@@ -6,71 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" type="text/css" href="./css/blackjack.css">
+    
     <script src="./js/bundle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>BlackJack by Don Nguyen</title>
 </head>
 <body>
 
-    <h1>BlackJack by Don Nguyen</h1>
+<h1 class="heading">BlackJack by Don Nguyen</h1>
 
-    <div id='blackjack-table' class='blackjack-table'>
+<div id="game-message" class='game-message'></div>
 
-        <h1>Table</h1>
+<div id="everything">
 
-        
-        <div id="deck" class='deck'>
-        </div>
+    <div id='blackjack-table' class='blackjack-table flex'>
 
-        <div class='flex'>
-            <p>Dealer:</p>
-            <div id="dealer-hand" class='dealer-hand'>
-                
-            </div>
-            <div id='dealer-score' class='dealer-score'>
+      
 
+        <div class='table-section-1'>
+            <div id="deck" class='deck'>
             </div>
         </div>
        
-        <div class='flex'>
-            <p>You:</p>
-            <div id='player-hand' class='player-hand'>
+        <div class='table-section-2'>
                 
+            <div>
+                <p>Dealer:</p>
+                <div id="dealer-hand" class='dealer-hand'>
+                            
+                </div>
+                <div id='dealer-score' class='dealer-score'>
+                </div>
             </div>
-            <div id='player-score' class='player-score'>
 
+            <div>
+                <p>You:</p>
+                <div id='player-hand' class='player-hand'>
+                    
+                </div>
+                <div id='player-score' class='player-score'>
+                </div>
             </div>
         </div>
 
-
-
-
-        
+        <div class='table-section-3'>
+                <div id='buttons' class='buttons'>
+                    <button id='start-button'>New Game</button>
+                    <button id='hit-button' class='hide-this-shit'>Hit</button>
+                    <button id='stay-button' class='hide-this-shit'>Stay</button>
+                    <br>
+                    <label for='bet-amount'>Your wager</label>
+                    <br>
+                    <input id="bet-amount" placeholder="Enter Bet" value="" type="number"/>
+                    <br> 
+                </div>
+                <h1>Your money:</h1>
+                <div id='money' class='money'>         
+                </div>
+        </div>
 
     </div>
 
-    <div id='buttons' class='buttons'>
-        <button id='start-button'>Start</button>
-        <button id='hit-button' class='hide-this-shit'>Hit</button>
-        <button id='stay-button' class='hide-this-shit'>Stay</button>
-
-        <br>
-
-        <label for='bet-amount'>Your wager</label>
-
-        <br>
-
-        <input id="bet-amount" placeholder="Enter Bet" value="" type="number"/>
-
-        <br>
-
-        
-    </div>
-
-    <h1>Your money:</h1>
-    <div id='money' class='money'>
-            
-    </div>
+</div>
 
 </body>
 </html>

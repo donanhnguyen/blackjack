@@ -51,10 +51,16 @@ class View {
         this.render();
     }
 
-    render () {
+    gameOver () {
         if (this.game.gameOver) {
-            $("#buttons").empty();
+            $("#everything").empty();
+            document.getElementById("everything").innerHTML = "Game Over :(";
         }
+    }
+
+    render () {
+        this.gameOver();
+
         if (this.game.started) {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
@@ -68,14 +74,22 @@ class View {
         }
 
         document.getElementById('player-score').innerHTML = this.game.player.score;
-        document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
-        document.getElementById('money').innerHTML = this.game.player.money
+        if (this.game.player.staying) {
+            document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
+        } else {
+            document.getElementById('dealer-score').innerHTML = "";
+        }
+        document.getElementById('money').innerHTML = "$" + this.game.player.money
         this.Deck.innerHTML = this.game.deck.length;
         this.renderUICards();
 
     }
 
     renderUICards () {
+
+        var gameMessage = document.getElementById("game-message")
+        gameMessage.innerHTML = this.game.message;
+
         var dealerHand = document.getElementById("dealer-hand");
         var playerHand = document.getElementById("player-hand");
 
@@ -85,8 +99,15 @@ class View {
         for (let i = 0; i<this.game.dealer.hand.length; i++) {
             var dealerCard = this.game.dealer.hand[i];
             let card = document.createElement("div");
-            card.classList.add("card");
-            card.innerHTML = dealerCard.value;
+
+            if ((i === 1) && (!this.game.player.staying)) {
+                card.classList.add('back-of-card');
+            } else {
+                card.classList.add("card"); 
+                card.innerHTML = dealerCard.value;
+            }
+            
+           
             if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
                 card.classList.add("black");
             } else {
@@ -109,13 +130,6 @@ class View {
                 card.classList.add("red");
             }
             playerHand.appendChild(card);
-        }
-
-        if (!this.game.started) {
-            $("#dealer-hand").empty();
-            $("#player-hand").empty();
-            document.getElementById('player-score').innerHTML = "";
-            document.getElementById('dealer-score').innerHTML = "";
         }
 
     }

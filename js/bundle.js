@@ -67,8 +67,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-console.log("black jack bitch");
-
 var Game = __webpack_require__(1);
 var View = __webpack_require__(6);
 
@@ -105,6 +103,7 @@ class Game {
         this.dealer = new Dealer ();
         this.started = false;
         this.gameOver = false;
+        this.message = "";
     }
 
     start () {
@@ -116,6 +115,7 @@ class Game {
             this.gameOver = true;
             alert("You lost all your money! Referesh the page to start over!");
         } else {
+            this.message = '';
             this.started = true;
             this.dealer.hand = [];
             this.player.hand = [];
@@ -127,12 +127,11 @@ class Game {
 
     checkIfPlayerBusted () {
         if (this.player.score > 21) {
-            alert('Sorry, you lost! You went over 21.');
+            this.message = 'Sorry, you lost! You went over 21.';
             this.player.money -= this.player.bet;
             this.started = false;
         } 
     }
-
 
     dealCards () {
         var players = [this.player, this.dealer];
@@ -154,22 +153,22 @@ class Game {
     checkWinner () {
         let winner = null;
         if (this.player.score === 21) {
-            alert("21! YOU WIN!");
+            this.message ="21! YOU WIN!";
             winner = this.player;
         }   else if (this.dealer.score < this.player.score) {
-            alert("You got a higher score! You Win!");
+            this.message = "You got a higher score! You Win!";
             winner = this.player;
         }   else if (this.dealer.score > 21) {
-            alert("Dealer went over 21, you win!");
+            this.message = "Dealer went over 21, you win!";
             winner = this.player;
         } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
-            alert("Dealer got higher score than you, you lose!");
+            this.message = "Dealer got higher score than you, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === 21) {
-            alert("Dealer got 21, you lose!");
+            this.message = "Dealer got 21, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
-            alert("Tie! You lose!");
+            this.message = "Tie! You lose!";
             winner = this.dealer;
         }
        
@@ -288,7 +287,8 @@ class Player {
     submitBet (amount) {
         if (amount <= this.money) {
             this.bet = amount;
-            console.log(this.bet); 
+        } else {
+            alert("You don't have that much money...")
         }
     }
 
@@ -403,10 +403,16 @@ class View {
         this.render();
     }
 
-    render () {
+    gameOver () {
         if (this.game.gameOver) {
-            $("#buttons").empty();
+            $("#everything").empty();
+            document.getElementById("everything").innerHTML = "Game Over :(";
         }
+    }
+
+    render () {
+        this.gameOver();
+
         if (this.game.started) {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
@@ -420,14 +426,22 @@ class View {
         }
 
         document.getElementById('player-score').innerHTML = this.game.player.score;
-        document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
-        document.getElementById('money').innerHTML = this.game.player.money
+        if (this.game.player.staying) {
+            document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
+        } else {
+            document.getElementById('dealer-score').innerHTML = "";
+        }
+        document.getElementById('money').innerHTML = "$" + this.game.player.money
         this.Deck.innerHTML = this.game.deck.length;
         this.renderUICards();
 
     }
 
     renderUICards () {
+
+        var gameMessage = document.getElementById("game-message")
+        gameMessage.innerHTML = this.game.message;
+
         var dealerHand = document.getElementById("dealer-hand");
         var playerHand = document.getElementById("player-hand");
 
@@ -437,8 +451,15 @@ class View {
         for (let i = 0; i<this.game.dealer.hand.length; i++) {
             var dealerCard = this.game.dealer.hand[i];
             let card = document.createElement("div");
-            card.classList.add("card");
-            card.innerHTML = dealerCard.value;
+
+            if ((i === 1) && (!this.game.player.staying)) {
+                card.classList.add('back-of-card');
+            } else {
+                card.classList.add("card"); 
+                card.innerHTML = dealerCard.value;
+            }
+            
+           
             if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
                 card.classList.add("black");
             } else {
@@ -461,13 +482,6 @@ class View {
                 card.classList.add("red");
             }
             playerHand.appendChild(card);
-        }
-
-        if (!this.game.started) {
-            $("#dealer-hand").empty();
-            $("#player-hand").empty();
-            document.getElementById('player-score').innerHTML = "";
-            document.getElementById('dealer-score').innerHTML = "";
         }
 
     }

@@ -11,6 +11,7 @@ class Game {
         this.dealer = new Dealer ();
         this.started = false;
         this.gameOver = false;
+        this.message = "";
     }
 
     start () {
@@ -22,6 +23,7 @@ class Game {
             this.gameOver = true;
             alert("You lost all your money! Referesh the page to start over!");
         } else {
+            this.message = '';
             this.started = true;
             this.dealer.hand = [];
             this.player.hand = [];
@@ -33,12 +35,11 @@ class Game {
 
     checkIfPlayerBusted () {
         if (this.player.score > 21) {
-            alert('Sorry, you lost! You went over 21.');
+            this.message = 'Sorry, you lost! You went over 21.';
             this.player.money -= this.player.bet;
             this.started = false;
         } 
     }
-
 
     dealCards () {
         var players = [this.player, this.dealer];
@@ -60,22 +61,22 @@ class Game {
     checkWinner () {
         let winner = null;
         if (this.player.score === 21) {
-            alert("21! YOU WIN!");
+            this.message ="21! YOU WIN!";
             winner = this.player;
         }   else if (this.dealer.score < this.player.score) {
-            alert("You got a higher score! You Win!");
+            this.message = "You got a higher score! You Win!";
             winner = this.player;
         }   else if (this.dealer.score > 21) {
-            alert("Dealer went over 21, you win!");
+            this.message = "Dealer went over 21, you win!";
             winner = this.player;
         } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
-            alert("Dealer got higher score than you, you lose!");
+            this.message = "Dealer got higher score than you, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === 21) {
-            alert("Dealer got 21, you lose!");
+            this.message = "Dealer got 21, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
-            alert("Tie! You lose!");
+            this.message = "Tie! You lose!";
             winner = this.dealer;
         }
        
