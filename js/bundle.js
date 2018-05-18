@@ -168,15 +168,15 @@ class Game {
             this.message = "Dealer got 21, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
-            this.message = "Tie! You lose!";
-            winner = this.dealer;
+            this.message = "Tie!";
         }
        
         if (winner === this.player) {
             this.player.money += this.player.bet;
-        } else {
+        } else if (winner === this.dealer) {
             this.player.money -= this.player.bet;
-        }
+        } 
+
         this.started = false;
     }
 
