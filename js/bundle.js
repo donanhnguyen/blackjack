@@ -216,7 +216,7 @@ module.exports = Game;
 var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
-function makeDeck () {
+const makeDeck = () => {
 
     let deck = [];
 
@@ -229,7 +229,7 @@ function makeDeck () {
                  weight = 10;
             }
             if (values[i] == "A") {
-                weight = 11;
+                weight = 1;
             }
                 
             card = {
@@ -288,7 +288,8 @@ class Player {
         if (amount <= this.money) {
             this.bet = amount;
         } else {
-            alert("You don't have that much money...")
+            alert("You don't have that much money...");
+            this.bet = 0;
         }
     }
 
@@ -297,6 +298,11 @@ class Player {
         this.hand.forEach(card => {
             total += card.weight;
         });
+        this.hand.forEach((card) => {
+            if ((card.value === "A") && (total + 10 <= 21)) {
+                total += 10
+            }
+        })
         this.score = total;
         return this.score;
     }
@@ -305,9 +311,6 @@ class Player {
         this.hand.push(card);
         this.calculateWeight();
     }
-
-
-
 
 }
 
@@ -330,6 +333,11 @@ class Dealer {
         this.hand.forEach(card => {
             total += card.weight;
         });
+        this.hand.forEach((card) => {
+            if ((card.value === "A") && (total + 10 <= 21)) {
+                total += 10
+            }
+        })
         this.score = total;
         return this.score;
     }
@@ -451,15 +459,12 @@ class View {
         for (let i = 0; i<this.game.dealer.hand.length; i++) {
             var dealerCard = this.game.dealer.hand[i];
             let card = document.createElement("div");
-
             if ((i === 1) && (!this.game.player.staying)) {
                 card.classList.add('back-of-card');
             } else {
                 card.classList.add("card"); 
                 card.innerHTML = dealerCard.value;
             }
-            
-           
             if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
                 card.classList.add("black");
             } else {

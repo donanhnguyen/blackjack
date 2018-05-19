@@ -11,6 +11,11 @@ class Dealer {
         this.hand.forEach(card => {
             total += card.weight;
         });
+        this.hand.forEach((card) => {
+            if ((card.value === "A") && (total + 10 <= 21)) {
+                total += 10
+            }
+        })
         this.score = total;
         return this.score;
     }

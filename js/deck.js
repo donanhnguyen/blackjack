@@ -1,7 +1,7 @@
 var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
-function makeDeck () {
+const makeDeck = () => {
 
     let deck = [];
 
@@ -14,7 +14,7 @@ function makeDeck () {
                  weight = 10;
             }
             if (values[i] == "A") {
-                weight = 11;
+                weight = 1;
             }
                 
             card = {

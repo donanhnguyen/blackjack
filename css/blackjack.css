@@ -3,7 +3,7 @@ html {
 }
 body {
     text-align: center;
-    background: rgb(160, 193, 160);
+    background: rgb(24, 24, 24);
     color: white;
     margin: 0;
     padding: 0;
@@ -31,11 +31,18 @@ button:hover {
 }
 .heading {
     padding: 40px;
+    font-size: 75px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(210, 139, 8);
+    background-image: url('../images/blackjack.jpg');
+    background-size: 100% 100%;
 }
 .blackjack-table {
     color: white;
-    background: rgb(55, 55, 55);
-    border: 1px solid black;
+    background: radial-gradient(rgb(114, 162, 114), rgb(33, 33, 33));
+    border-radius: 20%;
+    border: 7px dashed gray;
+    padding: 10px;
     margin-top: 10px; 
 }
 .hide-this-shit {
@@ -54,7 +61,6 @@ button:hover {
     justify-content: space-evenly;
 }
 .table-section-1, .table-section-2, .table-section-3 {
-    border: 1px solid white;
     width: 33.3%
 }
 .table-section-1 {
@@ -84,7 +90,7 @@ button:hover {
 }
 .dealer-hand, .player-hand {
     display: flex;
-    background: linear-gradient(rgb(228, 228, 228), rgb(155, 182, 143));
+    background: linear-gradient(rgb(148, 148, 148), rgb(189, 203, 188));
     border: 1px solid white;
     min-height: 150px;   
     margin-top: 20px;
@@ -125,10 +131,10 @@ button:hover {
 }
 .game-message {
     text-align: center;
-    background-color: white;    
+    background-color: rgb(24, 24, 24);    
     margin: 0px;
     font-size: 35px;
-    color: red;
+    color: rgb(238, 72, 72);
 }
 @keyframes cardDrop {
     from {

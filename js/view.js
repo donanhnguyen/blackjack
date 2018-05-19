@@ -99,15 +99,12 @@ class View {
         for (let i = 0; i<this.game.dealer.hand.length; i++) {
             var dealerCard = this.game.dealer.hand[i];
             let card = document.createElement("div");
-
             if ((i === 1) && (!this.game.player.staying)) {
                 card.classList.add('back-of-card');
             } else {
                 card.classList.add("card"); 
                 card.innerHTML = dealerCard.value;
             }
-            
-           
             if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
                 card.classList.add("black");
             } else {
