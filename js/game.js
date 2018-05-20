@@ -52,10 +52,11 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        
-        console.log('players hand');
-        console.log(this.player.hand);
-        console.log(this.player.score);
+        if (this.player.score === 21) {
+            this.message ="BLACKJACK!";
+            this.player.money += this.player.bet;
+            this.started = false;
+        }
     }
 
     checkWinner () {
@@ -99,17 +100,11 @@ class Game {
     hitDealer() {
         let card = this.deck.pop();
         this.dealer.hit(card);
-        console.log('dealers hand');
-        console.log(this.dealer.hand);
-        console.log(this.dealer.score);
     }
 
     hitPlayer () {
         let card = this.deck.pop();
         this.player.hit(card);
-        console.log('players hand');
-        console.log(this.player.hand);
-        console.log(this.player.score);
         this.checkIfPlayerBusted();
     }
 

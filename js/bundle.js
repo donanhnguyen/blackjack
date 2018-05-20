@@ -144,10 +144,11 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        
-        console.log('players hand');
-        console.log(this.player.hand);
-        console.log(this.player.score);
+        if (this.player.score === 21) {
+            this.message ="BLACKJACK!";
+            this.player.money += this.player.bet;
+            this.started = false;
+        }
     }
 
     checkWinner () {
@@ -191,17 +192,11 @@ class Game {
     hitDealer() {
         let card = this.deck.pop();
         this.dealer.hit(card);
-        console.log('dealers hand');
-        console.log(this.dealer.hand);
-        console.log(this.dealer.score);
     }
 
     hitPlayer () {
         let card = this.deck.pop();
         this.player.hit(card);
-        console.log('players hand');
-        console.log(this.player.hand);
-        console.log(this.player.score);
         this.checkIfPlayerBusted();
     }
 
@@ -464,6 +459,7 @@ class View {
             } else {
                 card.classList.add("card"); 
                 card.innerHTML = dealerCard.value;
+                this.renderSuit(card, dealerCard);
             }
             if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
                 card.classList.add("black");
@@ -487,8 +483,26 @@ class View {
                 card.classList.add("red");
             }
             playerHand.appendChild(card);
+            this.renderSuit(card, playerCard);
         }
 
+    }
+
+    renderSuit (cardEle, cardJS) {
+        let suitEle = document.createElement("p");
+        if (cardJS.suit === "Spades") {
+            suitEle.innerHTML = "&#x2660";
+            cardEle.appendChild(suitEle);
+        } else if (cardJS.suit === "Clubs") {
+            suitEle.innerHTML = "&#x2663";
+            cardEle.appendChild(suitEle);
+        } else if (cardJS.suit === "Diamonds") {
+            suitEle.innerHTML = "&#x2666";
+            cardEle.appendChild(suitEle);
+        } else if (cardJS.suit === "Hearts") {
+            suitEle.innerHTML = "&#x2665";
+            cardEle.appendChild(suitEle);
+        }
     }
 
 }

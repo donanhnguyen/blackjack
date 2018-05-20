@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="stylesheet" type="text/css" href="./css/blackjack.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bowlby+One" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./js/bundle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>BlackJack by Don Nguyen</title>
@@ -17,11 +16,7 @@
 
 <div id="everything">
 
-<div id="game-message" class='game-message'></div>
-
-    <div id='blackjack-table' class='blackjack-table flex'>
-
-      
+    <div id='blackjack-table' class='blackjack-table'>
 
         <div class='table-section-1'>
             <div id="deck" class='deck'>
@@ -41,6 +36,7 @@
 
             <div>
                 <p>You:</p>
+                <div id="game-message" class='game-message'></div>
                 <div id='player-hand' class='player-hand'>
                     
                 </div>
@@ -60,7 +56,7 @@
                     <input id="bet-amount" placeholder="Enter Bet" value="" type="number"/>
                     <br> 
                 </div>
-                <h1>Your money:</h1>
+                <h1>Your $$$:</h1>
                 <div id='money' class='money'>         
                 </div>
         </div>
