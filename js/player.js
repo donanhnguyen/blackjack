@@ -6,6 +6,7 @@ class Player {
         this.staying = false;
         this.score = null;
         this.bet = 0;
+        this.doublingDown = false;
         this.calculateWeight();
     }
 
@@ -30,6 +31,11 @@ class Player {
         })
         this.score = total;
         return this.score;
+    }
+
+    doubleDown () {
+        this.bet *= 2;
+        this.doublingDown = true;
     }
 
     hit (card) {

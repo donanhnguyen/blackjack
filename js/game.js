@@ -28,6 +28,7 @@ class Game {
             this.dealer.hand = [];
             this.player.hand = [];
             this.player.staying = false;
+            this.player.doublingDown = false;
             this.deck = ShuffleDeck(Deck());
             this.dealCards();
         } 
@@ -38,6 +39,7 @@ class Game {
             this.message = 'Sorry, you lost! You went over 21.';
             this.player.money -= this.player.bet;
             this.started = false;
+            this.player.bet = 0;
         } 
     }
 
@@ -84,8 +86,9 @@ class Game {
             this.player.money += this.player.bet;
         } else if (winner === this.dealer) {
             this.player.money -= this.player.bet;
+            this.player.bet = 0;
         } 
-
+    
         this.started = false;
     }
 

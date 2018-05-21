@@ -24,10 +24,17 @@ button {
     color: white;
     font-size: 25px;
     border-radius: 10px;
+    min-width: 100px;
 }
 button:hover {
     background: rgb(194, 71, 49);
     cursor: pointer;
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.faded {
+    opacity: 0.3;
 }
 .heading {
     padding: 40px;
@@ -92,7 +99,7 @@ button:hover {
 }
 .dealer-hand, .player-hand {
     display: flex;
-    background: radial-gradient(rgb(15, 97, 33), rgb(7, 60, 4));
+    background: radial-gradient(rgb(42, 128, 61), rgb(36, 99, 33));
     border: 1px solid rgb(97, 97, 97);
     border-radius: 5px;
     min-height: 135px;   

@@ -2,22 +2,27 @@ class View {
 
     constructor (game, rootEl) {
         this.game = game;
-        this.rootEl = rootEl;
         this.HitButton = document.getElementById('hit-button');
         this.HitButton.addEventListener("click", this.hitClickHandler.bind(this));
-
         this.StartButton = document.getElementById('start-button');
         this.StartButton.addEventListener("click", this.startClickHandler.bind(this));
-
         this.StayButton = document.getElementById('stay-button');
         this.StayButton.addEventListener("click", this.stayClickHandler.bind(this));
-
-       
+        this.DoubleDownButton = document.getElementById("doubledown-button");
+        this.DoubleDownButton.addEventListener("click", this.doubleDownHandler.bind(this));
         this.BetAmount = document.getElementById('bet-amount');
         this.BetAmount.addEventListener('change', this.handleBetAmount.bind(this));
-     
         this.Deck = document.getElementById("deck");
-    
+        this.render();
+    }
+
+    doubleDownHandler () {
+        if ((this.game.player.bet * 2) <= this.game.player.money) {
+            this.game.player.doubleDown();
+            this.game.hitPlayer();
+        } else {
+            alert("You can't double down, not enough money...");
+        }
         this.render();
     }
 
@@ -43,18 +48,23 @@ class View {
     }
 
     startClickHandler () {
-        if (this.game.player.bet !== 0) {
-            this.game.start();
+        if (this.game.player.money <= 0) {
+            this.game.gameOver = true;
+            alert("You lost all your money! Referesh the page to start over!");
         } else {
-            alert("You have to bet something first");
+            if (this.game.player.bet !== 0 && this.game.player.bet > 0) {
+                this.game.start();
+            } else {
+                alert("You have to bet something first");
+            }
         }
         this.render();
     }
 
     gameOver () {
         if (this.game.gameOver) {
-            $("#everything").empty();
-            document.getElementById("everything").innerHTML = "Game Over :(";
+            let everything = document.getElementById("everything")
+            everything.innerHTML = "Game over bitch";
         }
     }
 
@@ -65,14 +75,20 @@ class View {
             this.StartButton.classList.add("hide-this-shit");
             this.HitButton.classList.remove('hide-this-shit');
             this.StayButton.classList.remove('hide-this-shit');
+            this.DoubleDownButton.classList.remove("hide-this-shit");
             this.BetAmount.setAttribute("readonly", "");
         } else {
             this.StartButton.classList.remove('hide-this-shit');
             this.HitButton.classList.add('hide-this-shit');
             this.StayButton.classList.add('hide-this-shit');
+            this.DoubleDownButton.classList.add("hide-this-shit");
             this.BetAmount.removeAttribute("readonly");
         }
-
+        //
+        if (this.game.player.doublingDown) {
+            this.HitButton.classList.add("hide-this-shit");
+        }
+        //
         document.getElementById('player-score').innerHTML = this.game.player.score;
         if (this.game.player.staying) {
             document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
@@ -80,22 +96,27 @@ class View {
             document.getElementById('dealer-score').innerHTML = "";
         }
         document.getElementById('money').innerHTML = "$" + this.game.player.money
+        this.BetAmount.value = this.game.player.bet;
+        if (this.game.player.doublingDown) {
+            this.DoubleDownButton.setAttribute("disabled", "");
+            this.DoubleDownButton.classList.add("faded");
+        } else {
+            this.DoubleDownButton.removeAttribute("disabled");
+            this.DoubleDownButton.classList.remove("faded");
+        }
         this.Deck.innerHTML = this.game.deck.length;
         this.renderUICards();
 
     }
 
     renderUICards () {
-
         var gameMessage = document.getElementById("game-message")
         gameMessage.innerHTML = this.game.message;
 
         var dealerHand = document.getElementById("dealer-hand");
         var playerHand = document.getElementById("player-hand");
 
-        var dHand = $("#dealer-hand");
-        dHand.empty();
-
+        dealerHand.innerHTML = "";
         for (let i = 0; i<this.game.dealer.hand.length; i++) {
             var dealerCard = this.game.dealer.hand[i];
             let card = document.createElement("div");
@@ -113,10 +134,8 @@ class View {
             }
             dealerHand.appendChild(card);
         }
-
-        var pHand = $("#player-hand");
-        pHand.empty();
-
+        
+        playerHand.innerHTML = "";
         for (let i = 0; i<this.game.player.hand.length; i++) {
             var playerCard = this.game.player.hand[i];
             let card = document.createElement("div");
