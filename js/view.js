@@ -11,8 +11,34 @@ class View {
         this.DoubleDownButton = document.getElementById("doubledown-button");
         this.DoubleDownButton.addEventListener("click", this.doubleDownHandler.bind(this));
         this.BetAmount = document.getElementById('bet-amount');
-        this.BetAmount.addEventListener('change', this.handleBetAmount.bind(this));
         this.Deck = document.getElementById("deck");
+        //
+        this.ResetChips = document.getElementById("resetBet");
+        this.ResetChips.addEventListener("click", this.resetBet.bind(this));
+
+        this.Chips = document.getElementById("chips");
+        for (let i=0;i<this.Chips.children.length;i++) {
+            let chip = this.Chips.children[i];
+            chip.addEventListener("click", this.placeBet.bind(this));
+        }
+        //
+        this.render();
+    }
+
+    placeBet (event) {
+        var amount = parseInt(event.currentTarget.innerText);
+        this.game.player.bet += amount;
+        if (this.game.player.bet <= this.game.player.money) {
+            this.render();
+        } else {
+            alert("You don't have that much money...");
+            this.game.player.bet -= (amount);
+        }
+        this.render();
+    }
+
+    resetBet () {
+        this.game.player.bet = 0;
         this.render();
     }
 
@@ -64,7 +90,7 @@ class View {
     gameOver () {
         if (this.game.gameOver) {
             let everything = document.getElementById("everything")
-            everything.innerHTML = "Game over bitch";
+            everything.innerHTML = "Game Over :(";
         }
     }
 
@@ -76,19 +102,21 @@ class View {
             this.HitButton.classList.remove('hide-this-shit');
             this.StayButton.classList.remove('hide-this-shit');
             this.DoubleDownButton.classList.remove("hide-this-shit");
-            this.BetAmount.setAttribute("readonly", "");
+            this.Chips.classList.add("hide-this-shit");
+            this.ResetChips.classList.add("hide-this-shit");
         } else {
             this.StartButton.classList.remove('hide-this-shit');
             this.HitButton.classList.add('hide-this-shit');
             this.StayButton.classList.add('hide-this-shit');
             this.DoubleDownButton.classList.add("hide-this-shit");
-            this.BetAmount.removeAttribute("readonly");
+            this.Chips.classList.remove("hide-this-shit");
+            this.ResetChips.classList.remove("hide-this-shit");
         }
-        //
+
         if (this.game.player.doublingDown) {
             this.HitButton.classList.add("hide-this-shit");
         }
-        //
+
         document.getElementById('player-score').innerHTML = this.game.player.score;
         if (this.game.player.staying) {
             document.getElementById('dealer-score').innerHTML = this.game.dealer.score;
@@ -96,7 +124,7 @@ class View {
             document.getElementById('dealer-score').innerHTML = "";
         }
         document.getElementById('money').innerHTML = "$" + this.game.player.money
-        this.BetAmount.value = this.game.player.bet;
+        this.BetAmount.innerText = this.game.player.bet;
         if (this.game.player.doublingDown) {
             this.DoubleDownButton.setAttribute("disabled", "");
             this.DoubleDownButton.classList.add("faded");

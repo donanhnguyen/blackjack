@@ -22,7 +22,7 @@ input[type='number'] {
 button {
     background-color: rgb(108, 155, 211);
     color: white;
-    font-size: 25px;
+    font-size: 22px;
     border-radius: 10px;
     min-width: 100px;
 }
@@ -30,15 +30,17 @@ button:hover {
     background: rgb(194, 71, 49);
     cursor: pointer;
 }
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
+/* input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} */
 .faded {
     opacity: 0.3;
 }
 .heading {
-    padding: 40px;
-    font-size: 75px;
+    padding: 10px;
+    font-size: 62px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(210, 139, 8);
     background-image: url('../images/blackjack.jpg');
@@ -50,8 +52,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     background: radial-gradient(rgb(114, 162, 114), rgb(33, 33, 33));
     border-radius: 20%;
     border: 7px dashed gray;
-    padding: 10px;
-    margin-top: 10px; 
+    padding: 5px;
+    margin-top: 0px; 
 }
 .hide-this-shit {
     display:none;
@@ -86,12 +88,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     color: black;
 }
 .deck {
-    width: 120px;
-    height: 175px;
+    width: 100px;
+    height: 155px;
     margin: auto;
     background-image: url('../images/deck.jpg');
     background-size: 100% 100%;
-    font-size: 50px;
+    font-size: 40px;
     color: black;
     border: 1px solid rgb(94, 94, 94);
     box-shadow: 3px 3px 8px 2px white;
@@ -102,7 +104,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     background: radial-gradient(rgb(42, 128, 61), rgb(36, 99, 33));
     border: 1px solid rgb(97, 97, 97);
     border-radius: 5px;
-    min-height: 135px;   
+    min-height: 120px;   
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
@@ -115,8 +117,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 .card {
     position: relative;
-    min-width: 22%;
-    min-height: 100px;
+    min-width: 20%;
+    min-height: 90px;
     margin: 1px;
     background: white;
     padding-top: 30px;
@@ -145,8 +147,17 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     text-align: center;
     background-color: rgb(24, 24, 24);    
     margin: 0px;
-    font-size: 28px;
+    font-size: 18px;
     color: rgb(238, 72, 72);
+}
+#bet-amount {
+    background-color: white;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 30px;
+    color: black;
+    min-width: 50px;
 }
 /* &#x2660 spade
 &#x2666 diamond
@@ -183,6 +194,13 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     to {
         top: 0px;
     }
+}
+
+@media screen and (min-width: 1500px) {
+   body {
+    width: 1500px;
+    margin: auto;
+   }
 }
 @media screen and (max-width: 910px) {
     .blackjack-table {

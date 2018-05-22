@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="./css/blackjack.css">
+    <link rel="stylesheet" type="text/css" href="./css/chips.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./js/bundle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -46,15 +47,11 @@
         </div>
 
         <div class='table-section-3'>
-                <div id='buttons' class='buttons'>
-                    <button id='start-button'>New Game</button>
-                    <button id='hit-button' class='hide-this-shit'>Hit</button>
-                    <button id='stay-button' class='hide-this-shit'>Stay</button>
-                    <button id='doubledown-button' class='hide-this-shit'>DoubleDown</button>
+                <div>
                     <br>
-                    <label for='bet-amount'>Your wager</label>
+                    <label for='bet-amount'>Your Bet</label>
                     <br>
-                    <input id="bet-amount" placeholder="Enter Bet" value="" type="number"/>
+                    <div id="bet-amount"></div>
                     <br> 
                 </div>
                 <h1>Your $$$:</h1>
@@ -64,6 +61,18 @@
 
     </div>
 
+    <div id="chips" class="chips">
+		<div id="chip" class="pokerchip whitechip">1</div>
+		<div id="chip" class="pokerchip redchip">5</div>
+		<div id="chip" class="pokerchip bluechip">10</div>
+        <div id="chip" class="pokerchip greenchip">25</div>
+        
+    </div>
+    <button id='start-button'>New Game</button>
+    <button id='hit-button' class='hide-this-shit'>Hit</button>
+    <button id='stay-button' class='hide-this-shit'>Stay</button>
+    <button id='doubledown-button' class='hide-this-shit'>DoubleDown</button>
+    <button id="resetBet">Reset Bet</button>
 </div>
 
 </body>
