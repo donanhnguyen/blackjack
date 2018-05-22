@@ -74,10 +74,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 33.3%
 }
 .table-section-1 {
-    padding-top:125px;
+    padding-top:105px;
 }
 .table-section-3 {
-    padding-top: 100px;
+    padding-top: 80px;
     font-size: 20px;
 }
 .table-section-3 h1, .table-section-3 button, .table-section-3 label, .table-section-3 input {
