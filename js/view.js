@@ -1,3 +1,5 @@
+var renderUICards = require("./cardsUI.js");
+
 class View {
 
     constructor (game, rootEl) {
@@ -81,7 +83,7 @@ class View {
             if (this.game.player.bet !== 0 && this.game.player.bet > 0) {
                 this.game.start();
             } else {
-                alert("You have to bet something first");
+                this.game.message = "You have to bet something first";
             }
         }
         this.render();
@@ -133,67 +135,19 @@ class View {
             this.DoubleDownButton.classList.remove("faded");
         }
         this.Deck.innerHTML = this.game.deck.length;
-        this.renderUICards();
-
+        renderUICards(this.game);
+        this.renderMoneyGain();
     }
 
-    renderUICards () {
-        var gameMessage = document.getElementById("game-message")
-        gameMessage.innerHTML = this.game.message;
-
-        var dealerHand = document.getElementById("dealer-hand");
-        var playerHand = document.getElementById("player-hand");
-
-        dealerHand.innerHTML = "";
-        for (let i = 0; i<this.game.dealer.hand.length; i++) {
-            var dealerCard = this.game.dealer.hand[i];
-            let card = document.createElement("div");
-            if ((i === 1) && (!this.game.player.staying)) {
-                card.classList.add('back-of-card');
-            } else {
-                card.classList.add("card"); 
-                card.innerHTML = dealerCard.value;
-                this.renderSuit(card, dealerCard);
-            }
-            if (dealerCard.suit === "Spades" || dealerCard.suit === "Clubs") {
-                card.classList.add("black");
-            } else {
-                card.classList.add("red");
-            }
-            dealerHand.appendChild(card);
-        }
-        
-        playerHand.innerHTML = "";
-        for (let i = 0; i<this.game.player.hand.length; i++) {
-            var playerCard = this.game.player.hand[i];
-            let card = document.createElement("div");
-            card.classList.add("card");
-            card.innerHTML = playerCard.value;
-            if (playerCard.suit === "Spades" || playerCard.suit === "Clubs") {
-                card.classList.add("black");
-            } else {
-                card.classList.add("red");
-            }
-            playerHand.appendChild(card);
-            this.renderSuit(card, playerCard);
-        }
-
-    }
-
-    renderSuit (cardEle, cardJS) {
-        let suitEle = document.createElement("p");
-        if (cardJS.suit === "Spades") {
-            suitEle.innerHTML = "&#x2660";
-            cardEle.appendChild(suitEle);
-        } else if (cardJS.suit === "Clubs") {
-            suitEle.innerHTML = "&#x2663";
-            cardEle.appendChild(suitEle);
-        } else if (cardJS.suit === "Diamonds") {
-            suitEle.innerHTML = "&#x2666";
-            cardEle.appendChild(suitEle);
-        } else if (cardJS.suit === "Hearts") {
-            suitEle.innerHTML = "&#x2665";
-            cardEle.appendChild(suitEle);
+    renderMoneyGain () {
+        var moneyGain = document.getElementById("moneyGain");
+        moneyGain.innerHTML = this.game.moneyGain;
+        if (this.game.wonOrNot) {
+            moneyGain.classList.remove("red");
+            moneyGain.classList.add("green");
+        } else {
+            moneyGain.classList.remove("green");
+            moneyGain.classList.add("red")
         }
     }
 

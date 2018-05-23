@@ -12,6 +12,8 @@ class Game {
         this.started = false;
         this.gameOver = false;
         this.message = "";
+        this.moneyGain = "";
+        this.wonOrNot = null;
     }
 
     start () {
@@ -24,6 +26,8 @@ class Game {
             alert("You lost all your money! Referesh the page to start over!");
         } else {
             this.message = '';
+            this.moneyGain = "";
+            this.wonOrNot = null;
             this.started = true;
             this.dealer.hand = [];
             this.player.hand = [];
@@ -38,6 +42,8 @@ class Game {
         if (this.player.score > 21) {
             this.message = 'Sorry, you lost! You went over 21.';
             this.player.money -= this.player.bet;
+            this.moneyGain = "-" + this.player.bet;
+            this.wonOrNot = false;
             this.started = false;
             this.player.bet = 0;
         } 
@@ -57,6 +63,8 @@ class Game {
         if (this.player.score === 21) {
             this.message ="BLACKJACK!";
             this.player.money += this.player.bet;
+            this.moneyGain = "+" + this.player.bet;
+            this.wonOrNot = true;
             this.started = false;
         }
     }
@@ -84,8 +92,12 @@ class Game {
        
         if (winner === this.player) {
             this.player.money += this.player.bet;
+            this.moneyGain = "+" + this.player.bet;
+            this.wonOrNot = true;
         } else if (winner === this.dealer) {
             this.player.money -= this.player.bet;
+            this.moneyGain = "-" + this.player.bet;
+            this.wonOrNot = false;
             this.player.bet = 0;
         } 
     

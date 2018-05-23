@@ -10,15 +10,6 @@ class Player {
         this.calculateWeight();
     }
 
-    submitBet (amount) {
-        if (amount <= this.money) {
-            this.bet = amount;
-        } else {
-            alert("You don't have that much money...");
-            this.bet = 0;
-        }
-    }
-
     calculateWeight () {
         var total = null;
         this.hand.forEach(card => {

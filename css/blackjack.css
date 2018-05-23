@@ -30,11 +30,6 @@ button:hover {
     background: rgb(194, 71, 49);
     cursor: pointer;
 }
-/* input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-} */
 .faded {
     opacity: 0.3;
 }
@@ -77,7 +72,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding-top:105px;
 }
 .table-section-3 {
-    padding-top: 80px;
+    padding-top: 70px;
     font-size: 20px;
 }
 .table-section-3 h1, .table-section-3 button, .table-section-3 label, .table-section-3 input {
@@ -113,7 +108,10 @@ input[type=number]::-webkit-outer-spin-button {
     color: black;
 }
 .red {
-    color: red;
+    color: rgb(254, 82, 82);
+}
+.green {
+    color: rgb(126, 255, 126);
 }
 .card {
     position: relative;
@@ -137,18 +135,11 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 10px;
     border: 1px solid black;
 }
-.cardDrop {
-    animation: cardDrop 0.5s;
-    -moz-animation: cardDrop 0.5s;
-    -webkit-animation: cardDrop 0.5s;
-    -o-animation: cardDrop 0.5s;
-}
 .game-message {
     text-align: center;
     background-color: rgb(24, 24, 24);    
     margin: 0px;
-    font-size: 18px;
-    color: rgb(238, 72, 72);
+    font-size: 19px;
 }
 #bet-amount {
     background-color: white;
@@ -163,6 +154,12 @@ input[type=number]::-webkit-outer-spin-button {
 &#x2666 diamond
 &#x2663 club
 &#x2665 heart */
+.cardDrop {
+    animation: cardDrop 0.5s;
+    -moz-animation: cardDrop 0.5s;
+    -webkit-animation: cardDrop 0.5s;
+    -o-animation: cardDrop 0.5s;
+}
 @keyframes cardDrop {
     from {
         top: -650px;
