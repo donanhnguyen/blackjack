@@ -560,7 +560,7 @@ const renderUICards = (game) => {
         }
         dealerHand.appendChild(card);
     }
-    
+ 
     playerHand.innerHTML = "";
 
     for (let i = 0; i<game.player.hand.length; i++) {
@@ -574,7 +574,7 @@ const renderUICards = (game) => {
             card.classList.add("red");
         }
         playerHand.appendChild(card);
-        card.classList
+        renderSuit(card, playerCard);
     }
     
 }
