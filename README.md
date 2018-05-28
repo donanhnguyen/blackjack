@@ -1,4 +1,6 @@
-# Blackjack, by Don Nguyen
+#### Blackjack, by Don Nguyen
+
+![alt text](https://media.giphy.com/media/5R0yySN75A48x4jvqH/giphy.gif)
 
 BlackJack, (also known as "21"), is an intuitive card game between a dealer and several players or only one player. 
 
