@@ -35,7 +35,8 @@ Click 'New Game' button to start the round.
 2. Stay: dealer will stop dealing you any cards, and begin dealing cards to himself until he either reaches the highest score to 21, or goes over 21.
 3. Doubledowm: dealer will hand you only 1 more card and your bet amount doubles, smart move to move if you are confident that the next card will bring you to 21 or close. But, if your next card doesn't bring you anywhere near 21, then oops! You lose double the original bet amount.
 
-### 3. Score: if the dealer loses, you win your bet amount and it's added to your chip stack. If you lose, you lose the amount of your best. 
+### 3. Score: 
+If the dealer loses, you win your bet amount and it's added to your chip stack. If you lose, you lose the amount of your best. 
 - If your money is completely gone, game is over, refresh the page to start all over again.
 - You can play as long as you have money!
 
@@ -44,7 +45,7 @@ Click 'New Game' button to start the round.
 ### 1. Creating the deck
 
 <div>
-    <img src="/images/screen1.png" width="450px" height="400px"</img> 
+    <img src="/images/screen1.png" width="500px" height="450px"</img> 
 </div>
 
 ### 2. Shuffling the deck
@@ -56,5 +57,5 @@ Click 'New Game' button to start the round.
 ### 3. Calculating hand score
 
 <div>
-    <img src="/images/screen3.png" width="50px" height="250px"</img> 
+    <img src="/images/screen3.png" width="500px" height="250px"</img> 
 </div>
