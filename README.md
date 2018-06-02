@@ -48,14 +48,20 @@ If the dealer loses, you win your bet amount and it's added to your chip stack. 
     <img src="/images/screen1.png" width="500px" height="450px"</img> 
 </div>
 
+Created 2 arrays, one with 4 Suits and one with 13 Faces. Loop through both arrays and create 4 cars on each suit with each face value. Card is created as Object.
+
 ### 2. Shuffling the deck
 
 <div>
     <img src="/images/screen2.png" width="500px" height="200px"</img> 
 </div>
 
+Loop through deck 1000 times and randomly switches the value of 2 random cards.
+
 ### 3. Calculating hand score
 
 <div>
     <img src="/images/screen3.png" width="500px" height="250px"</img> 
 </div>
+
+Loop through player or dealer's hand and calculate total score. Aces are worth 1 point, but if total score does not go over 21 with an Ace, then Ace is worth 11.

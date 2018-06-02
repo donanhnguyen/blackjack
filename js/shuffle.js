@@ -1,10 +1,10 @@
 const shuffle = (deck) => {
-    for (var i = 0; i < 1000; i++) {
-        var location1 = Math.floor((Math.random() * deck.length));
-        var location2 = Math.floor((Math.random() * deck.length));
-        var tmp = deck[location1];
-        deck[location1] = deck[location2];
-        deck[location2] = tmp;
+    for (let i = 0; i < 1000; i++) {
+        var card1 = Math.floor((Math.random() * deck.length));
+        var card2 = Math.floor((Math.random() * deck.length));
+        var tempCard = deck[card1];
+        deck[card1] = deck[card2];
+        deck[card2] = tempCard;
     }
     return deck;
 }
