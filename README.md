@@ -48,7 +48,7 @@ If the dealer loses, you win your bet amount and it's added to your chip stack. 
     <img src="/images/screen1.png" width="500px" height="450px"</img> 
 </div>
 
-Created 2 arrays, one with 4 Suits and one with 13 Faces. Loop through both arrays and create 4 cars on each suit with each face value. Card is created as Object.
+Created 2 arrays, one with 4 Suits and one with 13 Faces. Loop through both arrays and create 4 cards on each suit with each face value. Card is created as Object.
 
 ### 2. Shuffling the deck
 
