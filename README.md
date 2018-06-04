@@ -2,7 +2,7 @@
 
 ![alt text](https://media.giphy.com/media/5R0yySN75A48x4jvqH/giphy.gif)
 
-[Live Game](https://thedonwind69.github.io/blackjack/index.html)
+[Live Game](https://thedonwind69.github.io/blackjack/)
 
 BlackJack, (also known as "21"), is an intuitive card game between a dealer and several players or only one player. 
 
