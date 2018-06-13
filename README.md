@@ -6,16 +6,10 @@
 
 BlackJack, (also known as "21"), is an intuitive card game between a dealer and several players or only one player. 
 
+Rules of the game:
 https://en.wikipedia.org/wiki/Blackjack
 
-Interactive game built with `Vanilla Javascript (ES5, ES6)`, `HTML`, `CSS`.
-
-### Rules of the game:
-
-The dealer and player are both dealt 2 cards. The goal is to:
-1. Get 21, or as close as possible to 21 without going over (AKA "Busting").
-2. If you go over 21, you lose. If dealer goes over 21, they lose. 
-3. If neither of you goes over 21, the one with the higher score wins.
+- Interactive game built with `Vanilla Javascript (ES5, ES6)`, `HTML`, `CSS`, `WEbpack`, and `object-oriented` design for state management without using any external libraries.
 
 ### Features:
 
