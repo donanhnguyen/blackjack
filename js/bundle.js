@@ -225,13 +225,9 @@ module.exports = Game;
 
 var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-
 const makeDeck = () => {
-
     let deck = [];
-
     for (let i=0; i<values.length; i++) {
-
         for (let j=0; j<suits.length; j++) {
             let card = null;
             let weight = parseInt(values[i]);
@@ -241,16 +237,13 @@ const makeDeck = () => {
             if (values[i] == "A") {
                 weight = 1;
             }
-                
             card = {
                 value: values[i],
                 suit: suits[j],
                 weight: weight,
             }   
             deck.push(card);
-
         }
-
     }
     return deck;
 }
@@ -261,19 +254,14 @@ module.exports = makeDeck;
 /* 3 */
 /***/ (function(module, exports) {
 
-function shuffle (deck) {
-    // for 1000 turns
-    // switch the values of two random cards
-    for (var i = 0; i < 1000; i++) {
-    
-        var location1 = Math.floor((Math.random() * deck.length));
-        var location2 = Math.floor((Math.random() * deck.length));
-        var tmp = deck[location1];
-
-        deck[location1] = deck[location2];
-        deck[location2] = tmp;
+const shuffle = (deck) => {
+    for (let i = 0; i < 1000; i++) {
+        var card1 = Math.floor((Math.random() * deck.length));
+        var card2 = Math.floor((Math.random() * deck.length));
+        var tempCard = deck[card1];
+        deck[card1] = deck[card2];
+        deck[card2] = tempCard;
     }
-
     return deck;
 }
 
@@ -473,6 +461,7 @@ class View {
             this.DoubleDownButton.classList.remove("hide-this-shit");
             this.Chips.classList.add("hide-this-shit");
             this.ResetChips.classList.add("hide-this-shit");
+            document.getElementById('instructions')
         } else {
             this.StartButton.classList.remove('hide-this-shit');
             this.HitButton.classList.add('hide-this-shit');

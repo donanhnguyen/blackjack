@@ -106,6 +106,7 @@ class View {
             this.DoubleDownButton.classList.remove("hide-this-shit");
             this.Chips.classList.add("hide-this-shit");
             this.ResetChips.classList.add("hide-this-shit");
+            document.getElementById('instructions')
         } else {
             this.StartButton.classList.remove('hide-this-shit');
             this.HitButton.classList.add('hide-this-shit');
