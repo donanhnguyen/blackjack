@@ -461,7 +461,7 @@ class View {
             this.DoubleDownButton.classList.remove("hide-this-shit");
             this.Chips.classList.add("hide-this-shit");
             this.ResetChips.classList.add("hide-this-shit");
-            document.getElementById('instructions')
+            document.getElementById('instructions').innerHTML = "";
         } else {
             this.StartButton.classList.remove('hide-this-shit');
             this.HitButton.classList.add('hide-this-shit');
@@ -469,6 +469,7 @@ class View {
             this.DoubleDownButton.classList.add("hide-this-shit");
             this.Chips.classList.remove("hide-this-shit");
             this.ResetChips.classList.remove("hide-this-shit");
+            document.getElementById('instructions').innerHTML = "Click on the chip icons to place your bet.";
         }
 
         if (this.game.player.doublingDown) {
