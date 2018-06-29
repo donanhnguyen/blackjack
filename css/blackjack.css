@@ -36,8 +36,8 @@ button:hover {
 .heading {
     padding: 10px;
     font-size: 62px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(210, 139, 8);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(230, 151, 32);
     background-image: url('../images/blackjack.jpg');
     background-size: 100% 100%;
 }
@@ -149,6 +149,9 @@ button:hover {
     font-size: 30px;
     color: black;
     min-width: 50px;
+}
+.instructions {
+    font-size: 18px;
 }
 /* &#x2660 spade
 &#x2666 diamond
