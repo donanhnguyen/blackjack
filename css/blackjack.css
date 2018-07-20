@@ -35,7 +35,7 @@ button:hover {
 }
 .heading {
     padding: 10px;
-    font-size: 62px;
+    font-size: 55px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(230, 151, 32);
     background-image: url('../images/blackjack.jpg');
@@ -57,6 +57,7 @@ button:hover {
     display: inline-block;
     margin: auto;
     background: white;
+    font-size: 25px;
     color: black;   
     min-width: 200px;   
     border-radius: 10px;
@@ -72,7 +73,7 @@ button:hover {
     padding-top:105px;
 }
 .table-section-3 {
-    padding-top: 70px;
+    padding-top: 60px;
     font-size: 20px;
 }
 .table-section-3 h1, .table-section-3 button, .table-section-3 label, .table-section-3 input {
@@ -97,11 +98,10 @@ button:hover {
 .dealer-hand, .player-hand {
     display: flex;
     background: radial-gradient(rgb(42, 128, 61), rgb(36, 99, 33));
-    border: 1px solid rgb(97, 97, 97);
     border-radius: 5px;
     min-height: 120px;   
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
 }
 .black {
@@ -137,16 +137,17 @@ button:hover {
 }
 .game-message {
     text-align: center;
-    background-color: rgb(24, 24, 24);    
+    background-color: rgb(24, 24, 24);  
+    border-radius: 10px;  
     margin: 0px;
-    font-size: 19px;
+    font-size: 18px;
 }
 #bet-amount {
     background-color: white;
     display: inline-block;
     border-radius: 50%;
-    padding: 5px;
-    font-size: 30px;
+    padding: 10px;
+    font-size: 45px;
     color: black;
     min-width: 50px;
 }
