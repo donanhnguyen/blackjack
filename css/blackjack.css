@@ -196,7 +196,7 @@ button:hover {
         top: 0px;
     }
 }
-
+/* media queeries */
 @media screen and (min-width: 1500px) {
    body {
     width: 1500px;
