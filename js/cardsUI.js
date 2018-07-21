@@ -36,8 +36,9 @@ const renderUICards = (game) => {
     playerHand.innerHTML = "";
 
     var droppedCards = {};
-    droppedCards[0] = true;
-    droppedCards[1] = true;
+    for (let i = 0; i<game.player.hand.length; i++) {
+        droppedCards[i] = true;
+    }
 
     for (let i = 0; i<game.player.hand.length; i++) {
         var playerCard = game.player.hand[i];
@@ -53,15 +54,14 @@ const renderUICards = (game) => {
         renderSuit(card, playerCard);
     }
 
+    if (game.player.hand.length > 0) {
 
-    // if (game.player.hand.length > 0) {
-
-    //     var mostRecentCard = playerHand.children[game.player.hand.length - 1];
-    //     if (!droppedCards[game.player.hand.length - 1]) {
-    //         mostRecentCard.classList.add("cardDrop");
-    //         droppedCards[game.player.hand.length - 1] = true;
-    //     }
-    // }
+        var mostRecentCard = playerHand.children[game.player.hand.length - 1];
+        if (!droppedCards[game.player.hand.length - 1]) {
+            mostRecentCard.classList.add("cardDrop");
+            droppedCards[game.player.hand.length - 1] = true;
+        }
+    }
     
 }
 
