@@ -53,7 +53,6 @@ const renderUICards = (game) => {
         renderSuit(card, playerCard);
     }
 
- 
 
     // if (game.player.hand.length > 0) {
 
@@ -63,7 +62,6 @@ const renderUICards = (game) => {
     //         droppedCards[game.player.hand.length - 1] = true;
     //     }
     // }
-    
     
 }
 
