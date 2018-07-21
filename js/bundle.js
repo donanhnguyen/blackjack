@@ -75,12 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var Game1 = new Game ();
     var Blackjack = new View (Game1, rootEl);
     
-    ///--- testing
-    
     Blackjack.render();
-
-    
-    //---testing
     
 })
 
@@ -106,6 +101,8 @@ class Game {
         this.message = "";
         this.moneyGain = "";
         this.wonOrNot = null;
+        this.droppedPlayerCards = {};
+        this.droppedDealerCards = {};
     }
 
     start () {
@@ -117,6 +114,8 @@ class Game {
             this.gameOver = true;
             alert("You lost all your money! Referesh the page to start over!");
         } else {
+            this.droppedPlayerCards = {};
+            this.droppedDealerCards = {};
             this.message = '';
             this.moneyGain = "";
             this.wonOrNot = null;
@@ -551,12 +550,18 @@ const renderUICards = (game) => {
         dealerHand.appendChild(card);
     }
  
-    playerHand.innerHTML = "";
-
-    var droppedCards = {};
-    for (let i = 0; i<game.player.hand.length; i++) {
-        droppedCards[i] = true;
+    
+    game.droppedDealerCards[0] = true;
+    game.droppedDealerCards[1] = true;
+    if (game.dealer.hand.length > 0) {
+        var mostRecentCard = dealerHand.children[game.dealer.hand.length - 1];
+        if (!game.droppedDealerCards[game.dealer.hand.length - 1]) {
+            mostRecentCard.classList.add("cardDrop");
+            game.droppedDealerCards[game.dealer.hand.length - 1] = true;
+        }
     }
+
+    playerHand.innerHTML = "";
 
     for (let i = 0; i<game.player.hand.length; i++) {
         var playerCard = game.player.hand[i];
@@ -572,12 +577,15 @@ const renderUICards = (game) => {
         renderSuit(card, playerCard);
     }
 
+    if (game.player.hand.length === 2) {
+        game.droppedPlayerCards[0] = true;
+        game.droppedPlayerCards[1] = true;
+    } 
     if (game.player.hand.length > 0) {
-
         var mostRecentCard = playerHand.children[game.player.hand.length - 1];
-        if (!droppedCards[game.player.hand.length - 1]) {
+        if (!game.droppedPlayerCards[game.player.hand.length - 1]) {
             mostRecentCard.classList.add("cardDrop");
-            droppedCards[game.player.hand.length - 1] = true;
+            game.droppedPlayerCards[game.player.hand.length - 1] = true;
         }
     }
     

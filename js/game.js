@@ -14,6 +14,8 @@ class Game {
         this.message = "";
         this.moneyGain = "";
         this.wonOrNot = null;
+        this.droppedPlayerCards = {};
+        this.droppedDealerCards = {};
     }
 
     start () {
@@ -25,6 +27,8 @@ class Game {
             this.gameOver = true;
             alert("You lost all your money! Referesh the page to start over!");
         } else {
+            this.droppedPlayerCards = {};
+            this.droppedDealerCards = {};
             this.message = '';
             this.moneyGain = "";
             this.wonOrNot = null;

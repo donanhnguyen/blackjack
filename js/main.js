@@ -6,12 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var Game1 = new Game ();
     var Blackjack = new View (Game1, rootEl);
     
-    ///--- testing
-    
     Blackjack.render();
-
-    
-    //---testing
     
 })
 
