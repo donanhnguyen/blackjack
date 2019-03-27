@@ -25,9 +25,6 @@ class Dealer {
         this.calculateWeight();
     }
 
-
-
-
 }
 
 module.exports = Dealer;
