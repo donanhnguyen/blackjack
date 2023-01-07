@@ -34,12 +34,13 @@ button:hover {
     opacity: 0.3;
 }
 .heading {
-    padding: 10px;
+    padding: 55px;
     font-size: 55px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(235, 202, 16);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(255, 204, 0);
     background-image: url('../images/blackjack.jpg');
     background-size: 100% 100%;
+    height: 100px;
 }
 .blackjack-table {
     display: flex;
