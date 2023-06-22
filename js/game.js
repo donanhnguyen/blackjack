@@ -64,18 +64,25 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        if (this.player.score === 21) {
+        if (this.player.score === 21 && this.dealer.score !== 21) {
             this.message ="BLACKJACK!";
             this.player.money += this.player.bet;
             this.moneyGain = "+" + this.player.bet;
             this.wonOrNot = true;
             this.started = false;
+        } else if (this.player.score !== 21 && this.dealer.score === 21) {
+            this.message ="Dealer got 21... :(";
+            this.player.money -= this.player.bet;
+            this.moneyGain = "-" + this.player.bet;
+            this.wonOrNot = false;
+            this.started = false;
+            this.player.bet = 0;
         }
     }
 
     checkWinner () {
         let winner = null;
-        if (this.player.score === 21) {
+        if (this.player.score === 21 && this.dealer.score !== 21) {
             this.message ="21! YOU WIN!";
             winner = this.player;
         }   else if (this.dealer.score < this.player.score) {
@@ -87,7 +94,7 @@ class Game {
         } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
             this.message = "Dealer got higher score than you, you lose!";
             winner = this.dealer;
-        } else if (this.dealer.score === 21) {
+        } else if (this.dealer.score === 21 && this.player.score !== 21) {
             this.message = "Dealer got 21, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
@@ -110,7 +117,7 @@ class Game {
 
     stay () {
         this.player.staying = true;
-        while (this.dealer.score <= 16 && this.player.score !== 21) {
+        while (this.dealer.score <= 16) {
                 this.hitDealer();
         }
         this.checkWinner();

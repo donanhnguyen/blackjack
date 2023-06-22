@@ -74,9 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rootEl = document.getElementById('rootEl');
     var Game1 = new Game ();
     var Blackjack = new View (Game1, rootEl);
-    
     Blackjack.render();
-    
 })
 
 
@@ -151,18 +149,25 @@ class Game {
         }
         this.player.calculateWeight();
         this.dealer.calculateWeight();
-        if (this.player.score === 21) {
+        if (this.player.score === 21 && this.dealer.score !== 21) {
             this.message ="BLACKJACK!";
             this.player.money += this.player.bet;
             this.moneyGain = "+" + this.player.bet;
             this.wonOrNot = true;
             this.started = false;
+        } else if (this.player.score !== 21 && this.dealer.score === 21) {
+            this.message ="Dealer got 21... :(";
+            this.player.money -= this.player.bet;
+            this.moneyGain = "-" + this.player.bet;
+            this.wonOrNot = false;
+            this.started = false;
+            this.player.bet = 0;
         }
     }
 
     checkWinner () {
         let winner = null;
-        if (this.player.score === 21) {
+        if (this.player.score === 21 && this.dealer.score !== 21) {
             this.message ="21! YOU WIN!";
             winner = this.player;
         }   else if (this.dealer.score < this.player.score) {
@@ -174,7 +179,7 @@ class Game {
         } else if (this.dealer.score > this.player.score && this.dealer.score < 21) {
             this.message = "Dealer got higher score than you, you lose!";
             winner = this.dealer;
-        } else if (this.dealer.score === 21) {
+        } else if (this.dealer.score === 21 && this.player.score !== 21) {
             this.message = "Dealer got 21, you lose!";
             winner = this.dealer;
         } else if (this.dealer.score === this.player.score) {
@@ -197,7 +202,7 @@ class Game {
 
     stay () {
         this.player.staying = true;
-        while (this.dealer.score <= 16 && this.player.score !== 21) {
+        while (this.dealer.score <= 16) {
                 this.hitDealer();
         }
         this.checkWinner();
@@ -341,9 +346,6 @@ class Dealer {
         this.calculateWeight();
     }
 
-
-
-
 }
 
 module.exports = Dealer;
@@ -483,7 +485,8 @@ class View {
         }
         document.getElementById('money').innerHTML = "$" + this.game.player.money
         this.BetAmount.innerText = this.game.player.bet;
-        if (this.game.player.doublingDown) {
+     
+        if (this.game.player.doublingDown || this.game.player.hand.length > 2) {
             this.DoubleDownButton.setAttribute("disabled", "");
             this.DoubleDownButton.classList.add("faded");
         } else {
@@ -535,7 +538,12 @@ const renderUICards = (game) => {
     for (let i = 0; i<game.dealer.hand.length; i++) {
         var dealerCard = game.dealer.hand[i];
         let card = document.createElement("div");
-        if ((i === 1) && (!game.player.staying)) {
+
+        if ((i===1) && game.player.score !== 21 && game.dealer.score === 21) {
+            card.classList.add("card"); 
+            card.innerHTML = dealerCard.value;
+            renderSuit(card, dealerCard);
+        } else if ((i === 1) && (!game.player.staying)) {
             card.classList.add('back-of-card');
         } else {
             card.classList.add("card"); 

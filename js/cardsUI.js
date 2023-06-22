@@ -18,7 +18,12 @@ const renderUICards = (game) => {
     for (let i = 0; i<game.dealer.hand.length; i++) {
         var dealerCard = game.dealer.hand[i];
         let card = document.createElement("div");
-        if ((i === 1) && (!game.player.staying)) {
+
+        if ((i===1) && game.player.score !== 21 && game.dealer.score === 21) {
+            card.classList.add("card"); 
+            card.innerHTML = dealerCard.value;
+            renderSuit(card, dealerCard);
+        } else if ((i === 1) && (!game.player.staying)) {
             card.classList.add('back-of-card');
         } else {
             card.classList.add("card"); 

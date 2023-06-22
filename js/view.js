@@ -129,7 +129,8 @@ class View {
         }
         document.getElementById('money').innerHTML = "$" + this.game.player.money
         this.BetAmount.innerText = this.game.player.bet;
-        if (this.game.player.doublingDown) {
+     
+        if (this.game.player.doublingDown || this.game.player.hand.length > 2) {
             this.DoubleDownButton.setAttribute("disabled", "");
             this.DoubleDownButton.classList.add("faded");
         } else {
