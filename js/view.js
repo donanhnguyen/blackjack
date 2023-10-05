@@ -100,25 +100,25 @@ class View {
         this.gameOver();
 
         if (this.game.started) {
-            this.StartButton.classList.add("hide-this-shit");
-            this.HitButton.classList.remove('hide-this-shit');
-            this.StayButton.classList.remove('hide-this-shit');
-            this.DoubleDownButton.classList.remove("hide-this-shit");
-            this.Chips.classList.add("hide-this-shit");
-            this.ResetChips.classList.add("hide-this-shit");
+            this.StartButton.classList.add("hide-this");
+            this.HitButton.classList.remove('hide-this');
+            this.StayButton.classList.remove('hide-this');
+            this.DoubleDownButton.classList.remove("hide-this");
+            this.Chips.classList.add("hide-this");
+            this.ResetChips.classList.add("hide-this");
             document.getElementById('instructions').innerHTML = "";
         } else {
-            this.StartButton.classList.remove('hide-this-shit');
-            this.HitButton.classList.add('hide-this-shit');
-            this.StayButton.classList.add('hide-this-shit');
-            this.DoubleDownButton.classList.add("hide-this-shit");
-            this.Chips.classList.remove("hide-this-shit");
-            this.ResetChips.classList.remove("hide-this-shit");
+            this.StartButton.classList.remove('hide-this');
+            this.HitButton.classList.add('hide-this');
+            this.StayButton.classList.add('hide-this');
+            this.DoubleDownButton.classList.add("hide-this");
+            this.Chips.classList.remove("hide-this");
+            this.ResetChips.classList.remove("hide-this");
             document.getElementById('instructions').innerHTML = "Click on the chip icons to place your bet.";
         }
 
         if (this.game.player.doublingDown) {
-            this.HitButton.classList.add("hide-this-shit");
+            this.HitButton.classList.add("hide-this");
         }
 
         document.getElementById('player-score').innerHTML = this.game.player.score;

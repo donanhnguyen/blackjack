@@ -4,16 +4,21 @@
     text-align: center;
   }
   .pokerchip {
-    margin: 0px;
+    margin: 5px; /* Add some margin to separate chips */
     position: relative;
-    display: inline-block;
-    font-size:21px;
-    width: 40px;
-    height: 40px;
-    border: 4px dashed white;
+    display: inline-flex; /* Use flex to center content vertically and horizontally */
+    align-items: center;
+    justify-content: center;
+    font-size: 25px; /* Slightly reduce font size */
+    width: 50px; /* Slightly increase chip size */
+    height: 50px; /* Slightly increase chip size */
+    background-color: #fff; /* Set the background color for the chip */
+    border: 3px dashed #ffffff; /* Use a solid border instead of dashed */
     border-radius: 50%;
-    padding-top: 3px;
+    color: #000; /* Set text color */
+    font-weight: bold; /* Make the text bold */
   }
+  
   .pokerchip:hover {
     opacity: 0.5;
     cursor: pointer;
