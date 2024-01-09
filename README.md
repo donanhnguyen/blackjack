@@ -2,7 +2,7 @@
 
 ![alt text](https://media.giphy.com/media/5R0yySN75A48x4jvqH/giphy.gif)
 
-[Live Game](https://thedonwind69.github.io/blackjack/)
+[Live Game](https://donanhnguyen.github.io/blackjack/)
 
 BlackJack, (also known as "21"), is an intuitive card game between a dealer and several players or only one player. 
 
@@ -15,7 +15,7 @@ https://en.wikipedia.org/wiki/Blackjack
 
 Step 1: In your local terminal, git clone the project into an empty folder:
 ```
-git clone https://github.com/thedonwind69/blackjack.git
+git clone https://github.com/donanhnguyen/blackjack.git
 ```
 Step 2: CD into the new folder that was just created:
 ```
